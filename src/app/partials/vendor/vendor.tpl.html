@@ -1,0 +1,40 @@
+<div class="uk-container pad200" ng-init="getCarsList();getRentNotification()">
+  <h2 class="uk-text-center">Vendor App</h2>
+  <button class="uk-button uk-button-default floatbuthieght" type="button" name="button" ng-click="goTo('home')">Logout</button>
+  <hr>
+  <div>
+    <table class="uk-table uk-table-justify uk-table-divider">
+      <thead>
+          <tr>
+              <th class="uk-width-small">Car</th>
+              <th>Model, Mileage</th>
+              <th>Rent/d</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="car in cars">
+              <td>
+                  <img ng-bind="car.image" alt="car.image" />
+              </td>
+              <td>
+                <span ng-bind="car.name"></span>
+              </td>
+              <td>
+                <div class="uk-grid">
+                  <div class="uk-width-1-3">
+                    <input class="uk-input" ng-model="car.bid" type="number" placeholder="Bid"></span>
+                  </div>
+                  <div class="uk-width-1-3">
+                    <button class="uk-button uk-button-primary buthieght" type="button" name="button" ng-click="bidNow(car.id, car.bid)">Bid</button>
+                  </div>
+                  <div class="uk-width-1-3">
+                    <h5 class="text-green" ng-bind="car.bidStatus"></h5>
+                    <h6 class="text-green-auto" ng-if="car.allowRent" ng-bind="'BID Now!'"></h6>
+                  </div>
+                </div>
+            </td>
+          </tr>
+      </tbody>
+  </table>
+  </div>
+</div>
